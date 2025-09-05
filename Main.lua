@@ -52,7 +52,7 @@ local GameScripts = {
 
 local ScreenGui = Instance.new("ScreenGui")
 ScreenGui.Name = "ScriptSelectorGUI"
-ScreenGui.Parent = Player:WaitForChild("PlayerGui")
+ScreenGui.Parent = Player.PlayerGui
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 function createRoundedFrame(parent, size, position, color, transparency, cornerRadius)
@@ -174,22 +174,22 @@ for i, scriptData in ipairs(GameScripts) do
         
         showNotification("Cargando script: " .. scriptData.name)
         
-        delay(1, function()
-            local success = executeScript(scriptData)
+        task.wait(1)
+        
+        local success = executeScript(scriptData)
+        
+        if success then
+            showNotification("✓ Script " .. scriptData.name .. " ejecutado correctamente")
             
-            if success then
-                showNotification("✓ Script " .. scriptData.name .. " ejecutado correctamente")
-                
-                delay(2, function()
-                    if ScreenGui then
-                        ScreenGui:Destroy()
-                        print("Selector de scripts cerrado después de ejecución exitosa")
-                    end
-                end)
-            else
-                showNotification("❌ Error al ejecutar el script: " .. scriptData.name)
+            task.wait(2)
+            
+            if ScreenGui then
+                ScreenGui:Destroy()
+                print("Selector de scripts cerrado después de ejecución exitosa")
             end
-        end)
+        else
+            showNotification("❌ Error al ejecutar el script: " .. scriptData.name)
+        end
     end)
 end
 
@@ -217,8 +217,13 @@ local function toggleMenu()
     end
 end
 
-toggleButton.MouseButton1Click:Connect(toggleMenu)
-closeButton.MouseButton1Click:Connect(toggleMenu)
+toggleButton.MouseButton1Click:Connect(function()
+    toggleMenu()
+end)
+
+closeButton.MouseButton1Click:Connect(function()
+    toggleMenu()
+end)
 
 local function setupButtonHover(button, defaultColor, hoverColor)
     button.MouseEnter:Connect(function()
@@ -270,13 +275,13 @@ header.InputBegan:Connect(function(input)
             end
         end)
     end
-end
+end)
 
 header.InputChanged:Connect(function(input)
     if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
         dragInput = input
     end
-end
+end)
 
 UserInputService.InputChanged:Connect(function(input)
     if input == dragInput and dragging then
