@@ -91,7 +91,7 @@ function createButton(parent, size, position, text, textColor, backgroundColor, 
     return button
 end
 
-function createTextLabel(parent, size, position, text, textColor, transparency, textSize)
+function createTextLabel(parent, size, position, text, textColor, transparency, textSize, font)
     local label = Instance.new("TextLabel")
     label.Size = size
     label.Position = position
@@ -102,7 +102,7 @@ function createTextLabel(parent, size, position, text, textColor, transparency, 
     if textSize then
         label.TextSize = textSize
     end
-    label.Font = Enum.Font.GothamBold
+    label.Font = font
     label.TextStrokeTransparency = 0.8
     label.TextStrokeColor3 = Color3.new(0, 0, 0)
     label.Parent = parent
@@ -115,7 +115,7 @@ local mainFrame = createRoundedFrame(ScreenGui, UDim2.new(0, 450, 0, 500), UDim2
 mainFrame.Visible = false
 
 local header = createRoundedFrame(mainFrame, UDim2.new(1, 0, 0, 50), UDim2.new(0, 0, 0, 0), Color3.fromRGB(25, 25, 30), 0, 14)
-createTextLabel(header, UDim2.new(1, -60, 1, 0), UDim2.new(0, 10, 0, 0), "SELECTOR DE SCRIPTS", Color3.fromRGB(220, 220, 220), 1, 18)
+createTextLabel(header, UDim2.new(1, -60, 1, 0), UDim2.new(0, 10, 0, 0), "SELECTOR DE SCRIPTS", Color3.fromRGB(220, 220, 220), 1, 18, Enum.Font.GothamBold)
 
 local closeButton = createButton(header, UDim2.new(0, 30, 0, 30), UDim2.new(1, -35, 0.5, -15), "X", Color3.new(1, 1, 1), Color3.fromRGB(200, 50, 50), 8)
 
@@ -160,16 +160,14 @@ end
 for i, scriptData in ipairs(GameScripts) do
     local scriptButton = createButton(scrollingFrame, UDim2.new(1, -20, 0, 70), UDim2.new(0, 0, 0, 0), "", Color3.new(1, 1, 1), scriptData.color, 8)
     
-    local nameLabel = createTextLabel(scriptButton, UDim2.new(1, -10, 0, 30), UDim2.new(0, 10, 0, 5), scriptData.name, Color3.fromRGB(255, 255, 255), 1, 16)
+    local nameLabel = createTextLabel(scriptButton, UDim2.new(1, -10, 0, 30), UDim2.new(0, 10, 0, 5), scriptData.name, Color3.fromRGB(255, 255, 255), 1, 16, Enum.Font.GothamBold)
     nameLabel.TextXAlignment = Enum.TextXAlignment.Left
     
-    local gameLabel = createTextLabel(scriptButton, UDim2.new(1, -10, 0, 20), UDim2.new(0, 10, 0, 35), "Juego: " .. scriptData.game, Color3.fromRGB(220, 220, 220), 1, 14)
+    local gameLabel = createTextLabel(scriptButton, UDim2.new(1, -10, 0, 20), UDim2.new(0, 10, 0, 35), "Juego: " .. scriptData.game, Color3.fromRGB(220, 220, 220), 1, 14, Enum.Font.GothamBold)
     gameLabel.TextXAlignment = Enum.TextXAlignment.Left
-    gameLabel.Font = Enum.Font.Gotham
     
-    local placeLabel = createTextLabel(scriptButton, UDim2.new(1, -10, 0, 20), UDim2.new(0, 10, 0, 55), "ID: " .. scriptData.placeld, Color3.fromRGB(200, 200, 200), 1, 12)
+    local placeLabel = createTextLabel(scriptButton, UDim2.new(1, -10, 0, 20), UDim2.new(0, 10, 0, 55), "ID: " .. scriptData.placeld, Color3.fromRGB(200, 200, 200), 1, 12, Enum.Font.GothamBold)
     placeLabel.TextXAlignment = Enum.TextXAlignment.Left
-    placeLabel.Font = Enum.Font.Gotham
 
     scriptButton.MouseButton1Click:Connect(function()
         toggleMenu()
@@ -272,13 +270,13 @@ header.InputBegan:Connect(function(input)
             end
         end)
     end
-end)
+end
 
 header.InputChanged:Connect(function(input)
     if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
         dragInput = input
     end
-end)
+end
 
 UserInputService.InputChanged:Connect(function(input)
     if input == dragInput and dragging then
