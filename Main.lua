@@ -10,14 +10,14 @@ local GameScripts = {
         name = "Blox Fruit Aimbot xFernandoh",
         game = "Blox Fruit",
         placeld = 2753915549,
-        url = "https://pastebin.com/X1zz3JDx",
+        url = "loadstring(game:HttpGet("https://pastebin.com/raw/X1zz3JDx"))()",
         color = Color3.fromRGB(255, 85, 0)
     },
     {
         name = "Instant Steal No Despertar Brainrot",
         game = "No despiertes al Brainrot",
         placeld = 118915549367482,
-        url = "https://pastebin.com/g6zRKk3q",
+        url = "loadstring(game:HttpGet("https://pastebin.com/raw/g6zRKk3q"))()",
         color = Color3.fromRGB(0, 170, 255)
     },
     {
