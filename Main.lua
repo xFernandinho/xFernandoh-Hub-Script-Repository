@@ -27,7 +27,7 @@ image = "rbxassetid://71898304959538"
 name = "Steal a Brainrot Script xFernandoh",
 game = "Steal a Brainrot",
 placeId = 109983668079237,
-url = "https://pastebin.com/raw/8pNkHekA",
+url = "https://pastebin.com/raw/W8mjcBVj",
 color = Color3.fromRGB(255, 0, 128),
 image = "rbxassetid://97403659746631"
 },
