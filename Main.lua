@@ -27,7 +27,7 @@ local GameScripts = {
         name = "Steal a Brainrot Script xFernandoh",
         game = "Steal a Brainrot",
         placeId = 109983668079237,
-        url = "https://pastebin.com/8pNkHekA",
+        url = "https://pastebin.com/raw/8pNkHekA"",
         color = Color3.fromRGB(255, 0, 128),
         image = "https://www.roblox.com/es/games/109983668079237/Steal-a-Brainrot"
     },
