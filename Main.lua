@@ -24,12 +24,12 @@ local GameScripts = {
         image = "https://www.roblox.com/games/118915549367482/No-Despertar-al-Brainrot"
     },
     {
-        name = "Sin Script Aún",
-        game = "Sin Script Aún",
-        placeId = 11111111,
-        url = "https://pastefy.link/otro_mas",
+        name = "Steal a Brainrot Script",
+        game = "Roba uno Brainrot 🤑🤑",
+        placeId = 109983668079237,
+        url = "https://pastebin.com/8pNkHekA",
         color = Color3.fromRGB(255, 0, 128),
-        image = ""
+        image = "https://tr.rbxcdn.com/180DAY-beaec1dc0d14483e97f128ed71ef7447/768/432/Image/Webp/noFilter"
     },
     {
         name = "Sin Script Aún",
