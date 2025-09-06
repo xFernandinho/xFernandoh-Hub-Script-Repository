@@ -103,14 +103,11 @@ ScreenGui.Parent = Player.PlayerGui
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 ScreenGui.ResetOnSpawn = false
 
-local toggleButton = Instance.new("TextButton")
+local toggleButton = Instance.new("ImageButton")
 toggleButton.Size = UDim2.new(0, 50, 0, 50)
 toggleButton.Position = UDim2.new(0, 20, 0, 20)
 toggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 30)
-toggleButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-toggleButton.Text = "☰"
-toggleButton.TextSize = 20
-toggleButton.Font = Enum.Font.GothamBold
+toggleButton.Image = "rbxassetid://104794725099290"
 toggleButton.BorderSizePixel = 0
 toggleButton.ZIndex = 10
 toggleButton.Parent = ScreenGui
@@ -239,23 +236,22 @@ function toggleGUI(visible)
 if isAnimating then return end
 isAnimating = true
 
-if visible then  
-    mainFrame.Visible = true  
-    smoothTween(mainFrame, {Size = UDim2.new(0, 450, 0, 500)}, 0.4, Enum.EasingStyle.Back, Enum.EasingDirection.Out)  
-    smoothTween(mainFrame, {Position = UDim2.new(0.5, -225, 0.5, -250)}, 0.4, Enum.EasingStyle.Back, Enum.EasingDirection.Out)  
-    smoothTween(mainFrame, {BackgroundTransparency = 0}, 0.3)  
-else  
-    smoothTween(mainFrame, {Size = UDim2.new(0, 0, 0, 0)}, 0.3)  
-    smoothTween(mainFrame, {Position = UDim2.new(0.5, 0, 0.5, 0)}, 0.3)  
-    smoothTween(mainFrame, {BackgroundTransparency = 1}, 0.3)  
-    wait(0.3)  
-    mainFrame.Visible = false  
-end  
-  
-wait(0.4)  
-isAnimating = false  
-guiVisible = visible
+if visible then
+    mainFrame.Visible = true
+    smoothTween(mainFrame, {Size = UDim2.new(0, 450, 0, 500)}, 0.4, Enum.EasingStyle.Back, Enum.EasingDirection.Out)
+    smoothTween(mainFrame, {Position = UDim2.new(0.5, -225, 0.5, -250)}, 0.4, Enum.EasingStyle.Back, Enum.EasingDirection.Out)
+    smoothTween(mainFrame, {BackgroundTransparency = 0}, 0.3)
+else
+    smoothTween(mainFrame, {Size = UDim2.new(0, 0, 0, 0)}, 0.3)
+    smoothTween(mainFrame, {Position = UDim2.new(0.5, 0, 0.5, 0)}, 0.3)
+    smoothTween(mainFrame, {BackgroundTransparency = 1}, 0.3)
+    wait(0.3)
+    mainFrame.Visible = false
+end
 
+wait(0.4)
+isAnimating = false
+guiVisible = visible
 end
 
 function createScriptButton(scriptData)
@@ -267,95 +263,94 @@ button.AutoButtonColor = false
 button.BorderSizePixel = 0
 button.Parent = scriptsContainer
 
-local buttonCorner = Instance.new("UICorner")  
-buttonCorner.CornerRadius = UDim.new(0, 8)  
-buttonCorner.Parent = button  
-  
-local hoverEffect = Instance.new("Frame")  
-hoverEffect.Size = UDim2.new(1, 0, 1, 0)  
-hoverEffect.BackgroundColor3 = Color3.fromRGB(255, 255, 255)  
-hoverEffect.BackgroundTransparency = 0.9  
-hoverEffect.BorderSizePixel = 0  
-hoverEffect.ZIndex = 2  
-hoverEffect.Visible = false  
-hoverEffect.Parent = button  
-  
-local hoverCorner = Instance.new("UICorner")  
-hoverCorner.CornerRadius = UDim.new(0, 8)  
-hoverCorner.Parent = hoverEffect  
-  
-button.MouseEnter:Connect(function()  
-    hoverEffect.Visible = true  
-    smoothTween(button, {Size = UDim2.new(1, 5, 0, 75)}, 0.2)  
-end)  
-  
-button.MouseLeave:Connect(function()  
-    hoverEffect.Visible = false  
-    smoothTween(button, {Size = UDim2.new(1, 0, 0, 70)}, 0.2)  
-end)  
-  
-local content = Instance.new("Frame")  
-content.Size = UDim2.new(1, -20, 1, -20)  
-content.Position = UDim2.new(0, 10, 0, 10)  
-content.BackgroundTransparency = 1  
-content.Parent = button  
-  
-local scriptName = Instance.new("TextLabel")  
-scriptName.Size = UDim2.new(1, 0, 0.5, 0)  
-scriptName.BackgroundTransparency = 1  
-scriptName.Text = scriptData.name  
-scriptName.TextColor3 = Color3.fromRGB(255, 255, 255)  
-scriptName.TextSize = 16  
-scriptName.Font = Enum.Font.GothamBold  
-scriptName.TextXAlignment = Enum.TextXAlignment.Left  
-scriptName.Parent = content  
-  
-local gameName = Instance.new("TextLabel")  
-gameName.Size = UDim2.new(1, 0, 0.5, 0)  
-gameName.Position = UDim2.new(0, 0, 0.5, 0)  
-gameName.BackgroundTransparency = 1  
-gameName.Text = scriptData.game  
-gameName.TextColor3 = Color3.fromRGB(220, 220, 220)  
-gameName.TextSize = 14  
-gameName.Font = Enum.Font.Gotham  
-gameName.TextXAlignment = Enum.TextXAlignment.Left  
-gameName.Parent = content  
-  
-if scriptData.image ~= "" then  
-    local imageContainer = Instance.new("Frame")  
-    imageContainer.Size = UDim2.new(0, 50, 0, 50)  
-    imageContainer.Position = UDim2.new(1, -60, 0.5, -25)  
-    imageContainer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)  
-    imageContainer.BorderSizePixel = 0  
-    imageContainer.Parent = content  
-      
-    local imageCorner = Instance.new("UICorner")  
-    imageCorner.CornerRadius = UDim.new(0, 8)  
-    imageCorner.Parent = imageContainer  
-      
-    local image = Instance.new("ImageLabel")  
-    image.Size = UDim2.new(1, -4, 1, -4)  
-    image.Position = UDim2.new(0, 2, 0, 2)  
-    image.Image = scriptData.image  
-    image.BackgroundTransparency = 1  
-    image.Parent = imageContainer  
-end  
-  
-button.MouseButton1Click:Connect(function()  
-    smoothTween(button, {BackgroundTransparency = 0.5}, 0.1)  
-    smoothTween(button, {BackgroundTransparency = 0}, 0.3)  
-      
-    showNotification("Cargando script: " .. scriptData.name)  
-    local success = executeScript(scriptData)  
-    if success then  
-        showNotification("✓ Script " .. scriptData.name .. " ejecutado correctamente")  
-    else  
-        showNotification("❌ Error al ejecutar el script: " .. scriptData.name)  
-    end  
-end)  
-  
-return button
+local buttonCorner = Instance.new("UICorner")
+buttonCorner.CornerRadius = UDim.new(0, 8)
+buttonCorner.Parent = button
 
+local hoverEffect = Instance.new("Frame")
+hoverEffect.Size = UDim2.new(1, 0, 1, 0)
+hoverEffect.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+hoverEffect.BackgroundTransparency = 0.9
+hoverEffect.BorderSizePixel = 0
+hoverEffect.ZIndex = 2
+hoverEffect.Visible = false
+hoverEffect.Parent = button
+
+local hoverCorner = Instance.new("UICorner")
+hoverCorner.CornerRadius = UDim.new(0, 8)
+hoverCorner.Parent = hoverEffect
+
+button.MouseEnter:Connect(function()
+    hoverEffect.Visible = true
+    smoothTween(button, {Size = UDim2.new(1, 5, 0, 75)}, 0.2)
+end)
+
+button.MouseLeave:Connect(function()
+    hoverEffect.Visible = false
+    smoothTween(button, {Size = UDim2.new(1, 0, 0, 70)}, 0.2)
+end)
+
+local content = Instance.new("Frame")
+content.Size = UDim2.new(1, -20, 1, -20)
+content.Position = UDim2.new(0, 10, 0, 10)
+content.BackgroundTransparency = 1
+content.Parent = button
+
+local scriptName = Instance.new("TextLabel")
+scriptName.Size = UDim2.new(1, 0, 0.5, 0)
+scriptName.BackgroundTransparency = 1
+scriptName.Text = scriptData.name
+scriptName.TextColor3 = Color3.fromRGB(255, 255, 255)
+scriptName.TextSize = 16
+scriptName.Font = Enum.Font.GothamBold
+scriptName.TextXAlignment = Enum.TextXAlignment.Left
+scriptName.Parent = content
+
+local gameName = Instance.new("TextLabel")
+gameName.Size = UDim2.new(1, 0, 0.5, 0)
+gameName.Position = UDim2.new(0, 0, 0.5, 0)
+gameName.BackgroundTransparency = 1
+gameName.Text = scriptData.game
+gameName.TextColor3 = Color3.fromRGB(220, 220, 220)
+gameName.TextSize = 14
+gameName.Font = Enum.Font.Gotham
+gameName.TextXAlignment = Enum.TextXAlignment.Left
+gameName.Parent = content
+
+if scriptData.image ~= "" then
+    local imageContainer = Instance.new("Frame")
+    imageContainer.Size = UDim2.new(0, 50, 0, 50)
+    imageContainer.Position = UDim2.new(1, -60, 0.5, -25)
+    imageContainer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    imageContainer.BorderSizePixel = 0
+    imageContainer.Parent = content
+
+    local imageCorner = Instance.new("UICorner")
+    imageCorner.CornerRadius = UDim.new(0, 8)
+    imageCorner.Parent = imageContainer
+
+    local image = Instance.new("ImageLabel")
+    image.Size = UDim2.new(1, -4, 1, -4)
+    image.Position = UDim2.new(0, 2, 0, 2)
+    image.Image = scriptData.image
+    image.BackgroundTransparency = 1
+    image.Parent = imageContainer
+end
+
+button.MouseButton1Click:Connect(function()
+    smoothTween(button, {BackgroundTransparency = 0.5}, 0.1)
+    smoothTween(button, {BackgroundTransparency = 0}, 0.3)
+
+    showNotification("Cargando script: " .. scriptData.name)
+    local success = executeScript(scriptData)
+    if success then
+        showNotification("✓ Script " .. scriptData.name .. " ejecutado correctamente")
+    else
+        showNotification("❌ Error al ejecutar el script: " .. scriptData.name)
+    end
+end)
+
+return button
 end
 
 for _, scriptData in ipairs(GameScripts) do
@@ -398,17 +393,16 @@ if dragStart then
 local dragTime = os.clock()
 local isDrag = (os.clock() - dragTime > 0.1)
 
-if not isDrag then  
-            smoothTween(toggleButton, {Size = UDim2.new(0, 45, 0, 45)}, 0.1)  
-            smoothTween(toggleButton, {Size = UDim2.new(0, 50, 0, 50)}, 0.2)  
-            toggleGUI(not guiVisible)  
-        end  
-          
-        dragStart = nil  
-        dragInput = nil  
-    end  
-end
+if not isDrag then
+            smoothTween(toggleButton, {Size = UDim2.new(0, 45, 0, 45)}, 0.1)
+            smoothTween(toggleButton, {Size = UDim2.new(0, 50, 0, 50)}, 0.2)
+            toggleGUI(not guiVisible)
+        end
 
+        dragStart = nil
+        dragInput = nil
+    end
+end
 end)
 
 lockButton.MouseButton1Click:Connect(function()
@@ -429,12 +423,11 @@ end)
 UserInputService.InputBegan:Connect(function(input, gameProcessed)
 if gameProcessed then return end
 
-if input.KeyCode == Enum.KeyCode.Escape and guiVisible then  
-    toggleGUI(false)  
-elseif input.KeyCode == Enum.KeyCode.RightShift then  
-    toggleGUI(not guiVisible)  
+if input.KeyCode == Enum.KeyCode.Escape and guiVisible then
+    toggleGUI(false)
+elseif input.KeyCode == Enum.KeyCode.RightShift then
+    toggleGUI(not guiVisible)
 end
-
 end)
 
 mainFrame.Size = UDim2.new(0, 0, 0, 0)
