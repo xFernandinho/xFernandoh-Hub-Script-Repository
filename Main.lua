@@ -13,7 +13,7 @@ game = "Blox Fruit",
 placeId = 2753915549,
 url = "https://pastebin.com/raw/X1zz3JDx",
 color = Color3.fromRGB(255, 85, 0),
-image = "https://www.roblox.com/games/2753915549/RED-EVENT-Blox-Fruits"
+image = "rbxassetid://70680939996354"
 },
 {
 name = "Instant Steal No Despertar Brainrot",
@@ -21,7 +21,7 @@ game = "No despertar al Brainrot",
 placeId = 118915549367482,
 url = "https://pastebin.com/raw/g6zRKk3q",
 color = Color3.fromRGB(0, 170, 255),
-image = "https://www.roblox.com/games/118915549367482/No-Despertar-al-Brainrot"
+image = "rbxassetid://71898304959538"
 },
 {
 name = "Steal a Brainrot Script xFernandoh",
@@ -29,7 +29,7 @@ game = "Steal a Brainrot",
 placeId = 109983668079237,
 url = "https://pastebin.com/raw/8pNkHekA",
 color = Color3.fromRGB(255, 0, 128),
-image = "https://www.roblox.com/es/games/109983668079237/Steal-a-Brainrot"
+image = "rbxassetid://97403659746631"
 },
 {
 name = "Sin Script Aún",
