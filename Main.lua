@@ -25,7 +25,7 @@ local GameScripts = {
     },
     {
         name = "Steal a Brainrot Script",
-        game = "Roba uno Brainrot 🤑🤑",
+        game = "Steal a Brainrot",
         placeId = 109983668079237,
         url = "https://pastebin.com/8pNkHekA",
         color = Color3.fromRGB(255, 0, 128),
