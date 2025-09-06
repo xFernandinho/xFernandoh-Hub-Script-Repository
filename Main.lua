@@ -24,7 +24,7 @@ local GameScripts = {
         image = "https://www.roblox.com/games/118915549367482/No-Despertar-al-Brainrot"
     },
     {
-        name = "Steal a Brainrot Script",
+        name = "Steal a Brainrot Script xFernandoh",
         game = "Steal a Brainrot",
         placeId = 109983668079237,
         url = "https://pastebin.com/8pNkHekA",
